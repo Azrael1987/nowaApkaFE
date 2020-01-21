@@ -1,0 +1,103 @@
+<p>preparations works!<br>
+{{date | date}}<br>
+Dziś jest {{daysOfWeek[date.getDay()-1]}} - {{date.getDay()}} dzień tygodnia.<br>
+dziesiejszy tenning był {{kind}} <br>
+dystans {{dystans | number }} {{unit}} <br>
+czas {{showResult()}} <br>
+Weather today ({{date | date: 'dd-MM-yyyy'}})<br>
+czy padało: {{todayWeather.isRain}}
+</p>
+<ul>
+    <ng-container *ngIf="daysOfWeek.length > 0">
+        <li *ngFor="let day of daysOfWeek; let i = index; let parz = even; let niep = odd; let ostatni = last; let pierwszy = first ">
+           <div [ngSwitch]="day">
+               {{day}}
+               <span *ngSwitchCase="'pon'"> - Montag</span>
+               <span *ngSwitchCase="'wt'"> - Dienstag</span>
+               <span *ngSwitchCase="'sr'"> - Mittwoch</span>
+               <span *ngSwitchCase="'czw'"> - Donnerstag</span>
+               <span *ngSwitchCase="'pt'"> - Freitag</span>
+               <span *ngSwitchCase="'sob'"> - Samstag</span>
+               <span *ngSwitchDefault> - Sonntag</span>
+               <!-- mozna siegac do indeksu lub do flag na indeksie jak odd, even, last, first i np. nadać im kolory -->
+
+            </div>
+        </li>
+    </ng-container>
+</ul>
+
+
+<ul>
+    <div  [ngStyle]="{'color': sunnyFont}">
+        <span *ngIf="isShow">
+            cos pomaranczowego
+        </span>
+    </div>
+
+
+    Pogoda na obecny tydzień:<br>
+    <ng-container *ngIf="weatherSchedule.length > 0; then areWeather; else noWeather">
+    </ng-container>
+
+    <ng-template #areWeather>
+        <div>
+            słoneczne dni:
+            <div *ngFor="let weather of weatherSchedule; let parz = even" [ngStyle]="{'color': sunnyFont}" >
+                 <li  *ngIf="!weather.isRain" >
+                     <span>
+                     w dniu {{weather.date | date: 'dd-MM-yyyy'}} padało: {{weather.isRain}} było wietrznie {{weather.isWind}}
+                    </span>
+                </li >
+            </div>
+            deszczowe dni:
+            <div *ngFor="let weather of weatherSchedule" [ngStyle]="{'color': rainnigFont}">
+                <li *ngIf="weather.isRain">
+                    w dniu {{weather.date | date: 'dd-MM-yyyy'}} padało: {{weather.isRain}} było wietrznie {{weather.isWind}}
+                </li>
+            </div>
+        </div>
+    </ng-template>
+    Pogoda na przyszły tydzień:<br>
+    <ng-container *ngIf="weatherScheduleForNextWeek.length > 0; else noWeather">
+        <div>
+        słoneczne dni:
+            <div *ngFor="let weather of weatherScheduleForNextWeek; let parz = even" [ngStyle]="{'color': sunnyFont}" >
+                <li  *ngIf="!weather.isRain" >
+                    <span>
+                        w dniu {{weather.date | date: 'dd-MM-yyyy'}} padało: {{weather.isRain}} było wietrznie {{weather.isWind}}
+                    </span>
+                </li >
+            </div>
+            deszczowe dni:
+            <div *ngFor="let weather of weatherSchedule" [ngStyle]="{'color': rainnigFont}">
+                <li *ngIf="weather.isRain">
+                    w dniu {{weather.date | date: 'dd-MM-yyyy'}} padało: {{weather.isRain}} było wietrznie {{weather.isWind}}
+                </li>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noWeather>
+        brak prognozy na ten czas
+    </ng-template>
+</ul>
+
+<app-training *ngFor="let i of [1,2]"> </app-training>
+
+<!-- derektywa  strukturalna usuwa z drzewa DOM elementy-->
+<ng-container *ngIf="isVisible">
+    <div>
+        cos do pokazania
+
+    </div>
+
+</ng-container>
+<button (click)="showWeather()">Pokaż</button>
+<button (click)="showWeather()">Ukryj</button>
+
+<br>
+<!-- ukrywa na stronie ale nie usuwa z drzewa DOM elementów -->
+<div [hidden]="isHidden">
+    odkryty
+</div>
+<button (click)="hidden()"> Zakryj </button>

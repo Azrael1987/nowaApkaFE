@@ -1,0 +1,9 @@
+<p>sandbox works!</p>
+<!-- gdyby tu było [hidden] to nie był by niszczony komponent a jedynie ukrywany, przu ngIf jest niszczony i  usuwany z pamieci -->
+<div *ngIf="show">
+  <app-corner [inputText] ="title" [inputAnimal]= "animal">Wysyłam dodatkowy content.</app-corner>
+</div>
+<button (click)="changeTitle()"> Zmień tytuł </button>
+<button (click)="changeAnimal()"> Zmień zwierze </button>
+<button (click)="nothing()"> Nic nie rób </button>
+<button (click)="destroy()"> zniszcz komponent </button>

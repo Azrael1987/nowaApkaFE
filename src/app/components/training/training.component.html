@@ -1,0 +1,23 @@
+<p>training works!</p>
+
+<div>
+  <div>
+    <div class="container">
+      <app-add-training (emitAddTask)="add($event)"></app-add-training> <!-- przechwytywanie eventu -->
+    </div>
+  </div>
+
+  <div class="container">
+    <app-to-do-training [trainingsList]="trainingsList" (emitCompleteTrianing)="complete($event)"
+      (emitDeleteTraining)="delete($event)"></app-to-do-training>
+
+    <app-done-training [doneTasksList]="doneTasksList"></app-done-training>
+
+  </div>
+</div>
+<div>Tu zaczniemy dziedziczenie</div>
+<app-swimming [tasks]="tasksList2" (eventTask)="selected($event)">
+<p>Dodatkowa treść z comoonentu rodzica czyli training.component</p>
+
+</app-swimming>
+<div> tu kończymy dziedziczenie</div>

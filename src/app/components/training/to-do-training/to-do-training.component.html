@@ -1,0 +1,17 @@
+<p>to-do-training works!</p>
+<div class="container2">
+  Lista zadań:
+  <ng-container *ngIf="trainingsList.length >0; else noTaskToDo">
+
+    <ul *ngFor="let task of trainingsList">
+      <li>
+        {{task}}
+        <button (click)="delete(task)"> usuń </button>
+        <button (click)="complete(task)"> gotowe </button>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #noTaskToDo>
+    <p> brak zadań do wykoania </p>
+  </ng-template>
+</div>

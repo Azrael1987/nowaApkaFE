@@ -1,0 +1,16 @@
+<p>done-training works!</p>
+<div class="container3">
+  Zadania wykonane: {{doneTasksList.length}}
+  <ng-container *ngIf="doneTasksList.length >0; else noTaskComplete">
+    <ul *ngFor="let task of doneTasksList">
+      <li>
+        {{task}}
+      </li>
+    </ul>
+  </ng-container>
+</div>
+<ng-template #noTaskComplete>
+  <p>
+    Nie wykonano żadnego zadania.
+  </p>
+</ng-template>

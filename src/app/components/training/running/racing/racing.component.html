@@ -1,0 +1,47 @@
+<p>racing works!</p>
+
+<h3 [className]="colorClass"> Uzycie property binding</h3>
+<img [src]="logoUrl">
+<input [maxLength]="maxLength" [value]="inputText">
+<button [disabled]="isDisable" (click)="change()"> dodaj</button>
+
+<h3 [className]="colorClass">uzycie event binding</h3>
+
+<input [disabled]="isDisable" (focus)="onFocus()"> Reaguje na focus i blokuje wszystkie pola
+<br>
+<input [disabled]="isDisable" (click)="onCklick($event)"> Rejestruje w logach pozycje klikniecia
+<br>
+<input [disabled]="isDisable" (mousemove)="onMouseMove($event)"> Rejestruje w logach ruch myszki
+<br>
+<input [disabled]="isDisable" [maxLength]="maxLength" (paste)="onPaste($event)">{{inputText2}} ma limit znaków i wyrzuca komunikat przy wklejaniu
+<br>
+<button (click)="change2()">Zmień coś</button> Odblokowuje pola powyżej
+
+<br>----------------<br>
+
+<h3> 2-way binding </h3>
+<p>Ten człowiek to {{profession}}, a jego umiejętność to {{skill}}</p>
+
+<label for="male">Zawód </label>
+<input [(ngModel)]="profession">
+<br>
+<label for="male">Umiejętność </label>
+<input [(ngModel)]="skill">
+
+
+
+
+
+<!-- <div>
+    <input [(ngModel)]="inputText2Way">
+{{inputText2Way}}
+</div>  -->
+
+<!-- <div>
+    <input (click)="click($event)">
+    <button [disabled]="przycisk">Dodaj</button>
+    {{showClik}}
+</div> -->
+
+
+
