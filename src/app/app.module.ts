@@ -13,6 +13,9 @@ import { ToDoTrainingComponent } from './components/training/to-do-training/to-d
 import { DoneTrainingComponent } from './components/training/done-training/done-training.component';
 import { SandboxComponent } from './components/training/sandbox/sandbox.component';
 import { CornerComponent } from './components/training/sandbox/corner/corner.component';
+import { MiniStoreComponent } from './components/mini-store/mini-store.component';
+import { StoreModule } from '@ngrx/store';
+import { simpleReducer } from '../app/simple.reducer';
 
 
 @NgModule({
@@ -27,11 +30,14 @@ import { CornerComponent } from './components/training/sandbox/corner/corner.com
     ToDoTrainingComponent,
     DoneTrainingComponent,
     SandboxComponent,
-    CornerComponent
+    CornerComponent,
+    MiniStoreComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+  //  AppRoutingModule,
+    StoreModule.forRoot({ message: simpleReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
