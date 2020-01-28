@@ -15,7 +15,9 @@ import { SandboxComponent } from './components/training/sandbox/sandbox.componen
 import { CornerComponent } from './components/training/sandbox/corner/corner.component';
 import { MiniStoreComponent } from './components/mini-store/mini-store.component';
 import { StoreModule } from '@ngrx/store';
-import { simpleReducer } from '../app/simple.reducer';
+import { simpleReducer } from './reducers/simple.reducer';
+import { postReducer } from './reducers/post.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -37,7 +39,10 @@ import { simpleReducer } from '../app/simple.reducer';
     BrowserModule,
     FormsModule,
   //  AppRoutingModule,
-    StoreModule.forRoot({ message: simpleReducer })
+    StoreModule.forRoot({ message: simpleReducer, post: postReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 99
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { simpleReducer } from '../../simple.reducer';
+import { simpleReducer, } from '../../reducers/simple.reducer';
+import { postReducer } from '../../reducers/post.reducer';
 import { Observable } from 'rxjs';
+
+import { Post } from '../../models/post.model';
+import * as PostActions from '../../actions/post.action';
 
 interface AppState {
   message: string;
+  post: Post;
 }
 
 @Component({
@@ -15,6 +20,8 @@ interface AppState {
 export class MiniStoreComponent implements OnInit {
 
   message$: Observable<string>;
+  post: Observable<Post>;
+  text: string; /// from input value
 
   ngOnInit() {
   }
@@ -22,6 +29,7 @@ export class MiniStoreComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {
     this.message$ = this.store.select('message');
+    this.post = this.store.select('post');
   }
 
   spanishMessage() {
@@ -32,6 +40,21 @@ export class MiniStoreComponent implements OnInit {
     this.store.dispatch({ type: 'French' });
   }
 
+  editText() {
+    this.store.dispatch(new PostActions.EditText(this.text));
+  }
+
+  resetPost() {
+    this.store.dispatch(new PostActions.Reset());
+  }
+
+  upvote() {
+    this.store.dispatch(new PostActions.Upvote());
+  }
+
+  downvote() {
+    this.store.dispatch(new PostActions.Downvote());
+  }
 
 }
 
