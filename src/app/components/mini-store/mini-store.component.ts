@@ -56,6 +56,18 @@ export class MiniStoreComponent implements OnInit {
     this.store.dispatch(new PostActions.Downvote());
   }
 
+  downpoint() {
+    this.store.dispatch(new PostActions.Downpoint());
+  }
+
+  uppoint() {
+    this.store.dispatch(new PostActions.Uppoint());
+  }
+
+  cleanpoint() {
+    this.store.dispatch(new PostActions.Cleanpoint());
+  }
+
 }
 
 

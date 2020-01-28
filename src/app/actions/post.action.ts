@@ -4,6 +4,9 @@ export const EDIT_TEXT = '[Post] Edit';
 export const UPVOTE = '[Post] Upvote';
 export const DOWNVOTE = '[Post] Downvote';
 export const RESET = '[Post] Reset';
+export const UPPOINT = '[Post] Uppoint';
+export const DOWNPOINT = '[Post] Downpoint';
+export const CLEANPOINT = '[Post] Cleanpoint';
 
 export class EditText implements Action {
   readonly type = EDIT_TEXT;
@@ -24,6 +27,18 @@ export class Reset implements Action {
   readonly type = RESET;
 }
 
-export type All = Upvote | Downvote | Reset | EditText;
+export class Uppoint implements Action {
+  readonly type = UPPOINT;
+}
+
+export class Downpoint implements Action {
+  readonly type = DOWNPOINT;
+}
+
+export class Cleanpoint implements Action {
+  readonly type = CLEANPOINT;
+}
+
+export type All = Upvote | Downvote | Reset | EditText | Uppoint | Downpoint | Cleanpoint;
 
 

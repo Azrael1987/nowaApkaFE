@@ -6,6 +6,7 @@ export type Action = PostAction.All;
 /// Default app state
 const defaultState: Post = {
   likes: 0,
+  points: null,
   text: 'Hello. This is default post'
 };
 
@@ -30,6 +31,15 @@ export function postReducer(state: Post = defaultState, action: Action) {
 
     case PostAction.RESET:
       return defaultState;
+
+    case PostAction.DOWNPOINT:
+      return newState(state, { points: state.points - 0.5 });
+
+    case PostAction.UPPOINT:
+      return newState(state, { points: state.points + 0.5 });
+
+    case PostAction.CLEANPOINT:
+      return newState(state, { points: null });
 
     default:
       return state;
