@@ -7,7 +7,8 @@ export type Action = PostAction.All;
 const defaultState: Post = {
   likes: 0,
   points: null,
-  text: 'Hello. This is default post'
+  text: 'Hello. This is default post',
+  product: 'Your list of products' ,
 };
 
 /// Helper function to create new state object
@@ -40,6 +41,12 @@ export function postReducer(state: Post = defaultState, action: Action) {
 
     case PostAction.CLEANPOINT:
       return newState(state, { points: null });
+
+    case PostAction.ADDPRODUCT:
+      return newState(state, { product: action.payload2 });
+
+    case PostAction.RESETPRODUCT:
+      return newState(state, { product: defaultState.product });
 
     default:
       return state;

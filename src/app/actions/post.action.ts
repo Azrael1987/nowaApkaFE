@@ -7,6 +7,8 @@ export const RESET = '[Post] Reset';
 export const UPPOINT = '[Post] Uppoint';
 export const DOWNPOINT = '[Post] Downpoint';
 export const CLEANPOINT = '[Post] Cleanpoint';
+export const ADDPRODUCT = '[Post] Addproduct';
+export const RESETPRODUCT = '[Post] Resetproduct';
 
 export class EditText implements Action {
   readonly type = EDIT_TEXT;
@@ -39,6 +41,16 @@ export class Cleanpoint implements Action {
   readonly type = CLEANPOINT;
 }
 
-export type All = Upvote | Downvote | Reset | EditText | Uppoint | Downpoint | Cleanpoint;
+export class Addproduct implements Action {
+  readonly type = ADDPRODUCT;
+
+  constructor(public payload2: string) { }
+}
+export class Resetproduct implements Action {
+  readonly type = RESETPRODUCT;
+}
+
+
+export type All = Upvote | Downvote | Reset | EditText | Uppoint | Downpoint | Cleanpoint | Addproduct | Resetproduct;
 
 
