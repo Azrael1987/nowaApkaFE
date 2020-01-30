@@ -12,7 +12,7 @@
   <div>
     <button (click)="upvote()">Upvote</button>
     <button (click)="downvote()">Downvote</button>
-    <button (click)="resetPost()">Reset</button>
+    <button (click)="resetPost()">Reset all</button>
 
     <input [(ngModel)]="text">
     <button (click)="editText() ">Change Title</button>
@@ -22,5 +22,12 @@
     <button (click)="downpoint()"> - half points</button>
     <button (click)="cleanpoint()"> clean points</button>
   </div>
+
+  <div>
+  <input [(ngModel)]="product">
+  <button (click)="addProduct()">Add products to list</button>
+  <button (click)="resetProduct()">Reset list of products</button>
+  <br>{{p.product}}
+    </div>
 
 </div>
