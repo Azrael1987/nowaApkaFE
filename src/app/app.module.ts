@@ -42,7 +42,7 @@ import { secondSimpleReducer } from './reducers/secondSimple.Reducer';
   //  AppRoutingModule,
     StoreModule.forRoot({ message: simpleReducer, post: postReducer, message2: secondSimpleReducer}),
     StoreDevtoolsModule.instrument({
-      maxAge: 99
+      maxAge: 50      // counter for remember states in redux Inspector
     })
   ],
   providers: [],

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-const  defaultMessage = 'Welcome in this place'
+const defaultMessage = 'Welcome in this place';
 
 export function secondSimpleReducer(state: string = defaultMessage, action: Action) {
   console.log(action.type, state);
