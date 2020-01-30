@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { simpleReducer } from './reducers/simple.reducer';
 import { postReducer } from './reducers/post.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { secondSimpleReducer } from './reducers/secondSimple.Reducer';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     FormsModule,
   //  AppRoutingModule,
-    StoreModule.forRoot({ message: simpleReducer, post: postReducer }),
+    StoreModule.forRoot({ message: simpleReducer, post: postReducer, message2: secondSimpleReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 99
     })
