@@ -50,7 +50,6 @@ export class Resetproduct implements Action {
   readonly type = RESETPRODUCT;
 }
 
-
 export type All = Upvote | Downvote | Reset | EditText | Uppoint | Downpoint | Cleanpoint | Addproduct | Resetproduct;
 
 
