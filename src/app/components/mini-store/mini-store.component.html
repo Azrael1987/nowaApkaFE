@@ -1,0 +1,33 @@
+<p>mini-store works!</p>
+<div>
+  {{message$ | async}}<br>
+  <button (click)='spanishMessage()'>Spanish</button>
+  <button (click)='frenchMessage()'>French</button>
+</div>
+<div *ngIf="post | async as p">
+
+  <h2> {{p.text}}</h2>
+  <h4> Votes: {{p.likes}} </h4>
+  <h4>Points: {{p.points}}</h4>
+  <div>
+    <button (click)="upvote()">Upvote</button>
+    <button (click)="downvote()">Downvote</button>
+    <button (click)="resetPost()">Reset all</button>
+
+    <input [(ngModel)]="text">
+    <button (click)="editText() ">Change Title</button>
+  </div>
+  <div>
+    <button (click)="uppoint()"> + half points</button>
+    <button (click)="downpoint()"> - half points</button>
+    <button (click)="cleanpoint()"> clean points</button>
+  </div>
+
+  <div>
+  <input [(ngModel)]="product">
+  <button (click)="addProduct()">Add products to list</button>
+  <button (click)="resetProduct()">Reset list of products</button>
+  <br>{{p.product}}
+    </div>
+
+</div>

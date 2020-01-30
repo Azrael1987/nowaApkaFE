@@ -13,6 +13,11 @@ import { ToDoTrainingComponent } from './components/training/to-do-training/to-d
 import { DoneTrainingComponent } from './components/training/done-training/done-training.component';
 import { SandboxComponent } from './components/training/sandbox/sandbox.component';
 import { CornerComponent } from './components/training/sandbox/corner/corner.component';
+import { MiniStoreComponent } from './components/mini-store/mini-store.component';
+import { StoreModule } from '@ngrx/store';
+import { simpleReducer } from './reducers/simple.reducer';
+import { postReducer } from './reducers/post.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -27,11 +32,17 @@ import { CornerComponent } from './components/training/sandbox/corner/corner.com
     ToDoTrainingComponent,
     DoneTrainingComponent,
     SandboxComponent,
-    CornerComponent
+    CornerComponent,
+    MiniStoreComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+  //  AppRoutingModule,
+    StoreModule.forRoot({ message: simpleReducer, post: postReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 99
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
