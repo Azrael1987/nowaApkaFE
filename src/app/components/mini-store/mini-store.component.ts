@@ -11,6 +11,7 @@ interface AppState {
   message: string;
   post: Post;
   productList: string[];
+  message2: string;
 }
 
 @Component({
@@ -25,6 +26,7 @@ export class MiniStoreComponent implements OnInit {
   text: string; /// from input value
   product: string; /// for 2nd input value
   productList$: Observable<string[]>;
+  message2$: Observable<string>;
 
   ngOnInit() {
   }
@@ -34,6 +36,7 @@ export class MiniStoreComponent implements OnInit {
     this.message$ = this.store.select('message');
     this.post = this.store.select('post');
     this.productList$ = this.store.select('productList');
+    this.message2$ = this.store.select('message2');
   }
 
   spanishMessage() {
@@ -79,6 +82,23 @@ export class MiniStoreComponent implements OnInit {
   resetProduct() {
     this.store.dispatch(new PostActions.Resetproduct());
   }
+
+  polishMessage2() {
+    this.store.dispatch({ type: 'Polish' });
+  }
+
+  italianMessage2() {
+    this.store.dispatch({ type: 'Italian' });
+  }
+
+  resetMessage2() {
+    this.store.dispatch({ type: 'Reset' });
+  }
+
+  // resetAllMessage() {
+  //   this.resetMessage();
+  //   this.resetMessage2();
+  // }
 
 }
 

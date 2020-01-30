@@ -2,13 +2,17 @@
 <div>
   {{message$ | async}}<br>
   <button (click)='spanishMessage()'>Spanish</button>
-  <button (click)='frenchMessage()'>French</button>
+  <button (click)='frenchMessage()'>French</button> <br>
+  {{message2$ | async}}<br>
+  <button (click)='polishMessage2()'> Polish</button>
+  <button (click)='italianMessage2()'> Italian</button>
+  <button (click)='resetMessage2()'> Reset 2nd message</button>
 </div>
 <div *ngIf="post | async as p">
 
   <h2> {{p.text}}</h2>
   <h4> Votes: {{p.likes}} </h4>
-  <h4>Points: {{p.points}}</h4>
+  <h4> Points: {{p.points}}</h4>
   <div>
     <button (click)="upvote()">Upvote</button>
     <button (click)="downvote()">Downvote</button>

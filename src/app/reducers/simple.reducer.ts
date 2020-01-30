@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-export function simpleReducer(state: string = 'Hello World', action: Action) {
+export function simpleReducer(state: string = 'Hello World', action: Action ) {
   console.log(action.type, state);
 
   switch (action.type) {
